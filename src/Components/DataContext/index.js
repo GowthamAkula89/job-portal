@@ -2,14 +2,13 @@ import React, { createContext, useState, useEffect } from "react";
 const DataContext = createContext();
 export const DataProvider = ({children}) => {
     const [jobsData, setJobsData] = useState([]);
-    const [roles, setRoles] = useState([]);
     useEffect(() => {
         const fetchData = async () => {
           try {
             const myHeaders = new Headers();
             myHeaders.append("Content-Type", "application/json");
             const body = JSON.stringify({
-              "limit": 10,
+              "limit": 115,
               
               "offset": 0
             });
@@ -30,19 +29,20 @@ export const DataProvider = ({children}) => {
         };
         fetchData();
       }, []);
-      useEffect(()=>{
-        if(jobsData.length !== 0){
-            const allRoles = [];
-            jobsData.jdList.forEach((job) => {
-                const jobRole = job.jobRole;
-                if(jobRole && !allRoles.includes(jobRole)){
-                    allRoles.push(jobRole);
-                }
-            })
-            setRoles(allRoles);
-        }
-      },[jobsData])
-      console.log(roles)
+      // useEffect(()=>{
+      //   if(jobsData.length !== 0){
+      //       const allRoles = [];
+      //       jobsData.jdList.forEach((job) => {
+      //           const jobRole = job.location;
+      //           if(jobRole && !allRoles.includes(jobRole)){
+      //               allRoles.push(jobRole);
+      //           }
+      //       })
+      //       setRoles(allRoles);
+      //   }
+      // },[jobsData])
+      
+      console.log(jobsData.jdList)
     return(
         <DataContext.Provider value={{ jobsData, setJobsData }}>
             {children}

@@ -2,6 +2,7 @@ import React, { createContext, useState, useEffect } from "react";
 const DataContext = createContext();
 export const DataProvider = ({children}) => {
     const [jobsData, setJobsData] = useState([]);
+    const [filteredJobsData, setFilteredJobsData] = useState([]);
     useEffect(() => {
         const fetchData = async () => {
           try {
@@ -9,7 +10,6 @@ export const DataProvider = ({children}) => {
             myHeaders.append("Content-Type", "application/json");
             const body = JSON.stringify({
               "limit": 115,
-              
               "offset": 0
             });
             const requestOptions = {
@@ -29,22 +29,10 @@ export const DataProvider = ({children}) => {
         };
         fetchData();
       }, []);
-      // useEffect(()=>{
-      //   if(jobsData.length !== 0){
-      //       const allRoles = [];
-      //       jobsData.jdList.forEach((job) => {
-      //           const jobRole = job.location;
-      //           if(jobRole && !allRoles.includes(jobRole)){
-      //               allRoles.push(jobRole);
-      //           }
-      //       })
-      //       setRoles(allRoles);
-      //   }
-      // },[jobsData])
-      
-      console.log(jobsData.jdList)
+      // console.log(jobsData.jdList)
+      // console.log(filteredJobsData);
     return(
-        <DataContext.Provider value={{ jobsData, setJobsData }}>
+        <DataContext.Provider value={{ jobsData, setJobsData, filteredJobsData, setFilteredJobsData }}>
             {children}
         </DataContext.Provider>
     )

@@ -14,17 +14,8 @@ const locations = ['delhi ncr', 'mumbai', 'chennai', 'bangalore'];
 const basePays = [10, 20, 30, 40, 50, 60, 70, 80];
 
 export default function FilterSection() {
-    const { jobsData, setFilteredJobsData } = useContext(DataContext);
-    const [company, setCompany] = useState("");
+    const { setCompany, filters, setFilters, handleSearch } = useContext(DataContext);
     const [debounceTimer, setDebounceTimer] = useState(null);
-    const [filters, setFilters] = useState({
-        selectedRole: "",
-        selectedExperience: "",
-        workType: "",
-        selectedLocation: "",
-        selectedBasePay: ""
-    });
-
     const handleFilterChange = (field, value) => {
         setFilters({ ...filters, [field]: value });
     };
@@ -39,18 +30,7 @@ export default function FilterSection() {
         setDebounceTimer(timer);
     };
 
-    const handleSearch = () => {
-        const filteredData = jobsData.jdList.filter(job => {
-            const roleMatch = !filters.selectedRole || job.jobRole === filters.selectedRole;
-            const experienceMatch = !filters.selectedExperience || (job.minExp <= filters.selectedExperience && job.maxExp >= filters.selectedExperience);
-            const workTypeMatch = !filters.workType || job.location === filters.workType;
-            const locationMatch = !filters.selectedLocation || job.location === filters.selectedLocation;
-            const basePayMatch = !filters.selectedBasePay || job.minJdSalary >= filters.selectedBasePay;
-            const companyMatch = !company || job.companyName.toLowerCase() === company.toLowerCase();
-            return roleMatch && experienceMatch && workTypeMatch && locationMatch && basePayMatch && companyMatch;
-        });
-        setFilteredJobsData(filteredData);
-    };
+    
 
     const renderSelectOptions = (options, label, field, labelWidth, disabled) => {
         return (

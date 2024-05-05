@@ -39,4 +39,4 @@ Make sure you have Node.js and npm installed on your machine.
 - Scroll down to load more job listings automatically.
 
 ### Live web URL
-- https://job-portal-ag.vercel.app/
+- https://jobs-portal-ag.vercel.app/

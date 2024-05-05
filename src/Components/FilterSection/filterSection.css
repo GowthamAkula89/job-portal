@@ -10,6 +10,7 @@
     border: 1px solid #acacac;
     border-radius: 5px;
     padding: 2px;
+    flex: 1;
 }
 .filter-company:focus{
     border-color: #ccc;

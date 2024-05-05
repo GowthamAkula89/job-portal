@@ -1,0 +1,75 @@
+.job-card{
+    width: 297px;
+    height: 100%;
+    border: 1px solid rgb(225, 215, 215);
+    border-radius: 8px;
+    padding: 25px 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+.job-posted-time{
+    display: flex;
+    gap: 5px;
+    border: 1px solid rgb(157, 154, 154);
+    width: 175px;
+    border-radius: 5px;
+    padding: 5px;
+}
+.job-title-details{
+    display: flex;
+    gap: 15px;
+}
+.company-name{
+    font-size: 21px;
+    font-weight: 600;
+    color: #857f7f;
+}
+.company-role{
+    font-size: 18px;
+    font-weight: 500;
+}
+.work-location{
+    font-size: 15px;
+    font-weight: 400;
+}
+.job-salary{
+    font-size: 15px;
+    font-weight: 500;
+    color: #5a5c5e;
+}
+.about-company{
+    font-size: 25px;
+    font-weight: 400;
+}
+.about-us{
+    font-size: 21px;
+    font-weight: 600;
+}
+.company-discription{
+    font-size: 17px;
+}
+.view-more-btn{
+    padding: 5px;
+    border: none;
+    border-radius: 5px;
+    background-color: rgb(14 101 242);
+}
+.min-exp-title{
+    font-size: 15px;
+    font-weight: 500;
+    color: #696565;
+}
+.apply-btn{
+    display: flex;
+    justify-content: center;
+    background-color: #83dec2;
+    padding: 7px;
+    border-radius: 5px;
+    text-decoration: none;
+    color: rgb(5, 5, 5);
+}
+.apply-btn-text{
+    font-size: 18px;
+    font-weight: 500;
+}

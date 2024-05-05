@@ -1,22 +1,15 @@
-import React, {useContext, useState} from "react";
+import React, {useState} from "react";
 import "./jobCard.css";
-import DataContext from "../DataContext";
 import HourglassBottomIcon from '@mui/icons-material/HourglassBottom';
 import BoltIcon from '@mui/icons-material/Bolt';
-const JobCard = () => {
-    const { jobsData } = useContext(DataContext);
+const JobCard = ({data}) => {
     const [isExpanded, setIsExpanded] = useState(false);
-    if (!jobsData || !jobsData.jdList || jobsData.jdList.length === 0) {
-        return null;
-    }
-    const data = jobsData.jdList[0];
     const toggleExpand = () => {
         setIsExpanded(!isExpanded);
     };
     const maxDescriptionLength = 250;
     const truncatedDescription = data.jobDetailsFromCompany.substring(0, maxDescriptionLength);
     const shouldTruncate = data.jobDetailsFromCompany.length > maxDescriptionLength;
-    console.log(data)
     return(
         <div className="job-card">
             <div className="job-posted-time">
@@ -56,15 +49,12 @@ const JobCard = () => {
             </div>
             <div>
                 <div className="min-exp-title">Minimum Experience</div>
-                <div>{data.minExp} years</div>
+                <div>{data.minExp !== null ? data.minExp : 0} years</div>
             </div>
-            <div>
-                <a href={data.jdLink}  className="apply-btn">
+            <a href={data.jdLink}  className="apply-btn">
                 <BoltIcon style={{fill: "#fbd81b"}}/>
                 <div className="apply-btn-text">Easy Apply</div>
-                </a>
-                
-            </div>
+            </a>
         </div>
     )
 }

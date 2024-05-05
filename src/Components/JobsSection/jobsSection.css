@@ -11,10 +11,14 @@
 }
 @media screen and (max-width: 1250px) {
     .jobs-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+@media screen and (max-width: 879px) {
+    .jobs-grid {
         grid-template-columns: repeat(2, 1fr);
     }
 }
-
 @media screen and (max-width: 789px) {
     .jobs-grid {
         grid-template-columns: repeat(1, 1fr);
